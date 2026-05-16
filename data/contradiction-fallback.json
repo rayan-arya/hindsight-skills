@@ -1,20 +1,20 @@
 {
   "_meta": {
-    "purpose": "Demo safety net for Scene 2.5. Used only if Track A's find-contradictions skill (A.6) produces mush at hour 8. Both takes hand-verified from corpus reading on 2026-05-16.",
+    "purpose": "Demo safety net for Scene 2.5. Used only if Track A's find-contradictions skill (A.6) produces mush at hour 8. Hand-verified from corpus reading on 2026-05-16.",
     "curator": "Track C (Keshav)",
-    "soft_contradiction": true,
-    "soft_contradiction_note": "C.5.5 spec disprefers 'obvious updates to better information' as contradictions. This pair is the strongest hand-verifiable PG flip in the corpus — growth.md frames growth as 'the ONLY essential thing,' aord.md frames runway awareness as also essential. PG himself never frames it as a flip, but the emphasis shift is substantive (priority of growth-rate vs default-alive). If A.6 finds a harder contradiction, prefer that over this."
+    "soft_contradiction": false,
+    "verification_notes": "PG himself explicitly flags this as a change of view (\"I used to think of VCs as piratical\"). Same topic (VC character), 3 years apart (Mar 2005 → Apr 2008), substantive flip (arrogant/devious → upstanding/timid), not a hedge or refinement. Meets every C.5.5 criterion."
   },
-  "topic": "startup essentials",
+  "topic": "the character of venture capitalists",
   "claim_a": {
-    "text": "A startup is a company designed to grow fast. The only essential thing is growth. Everything else we associate with startups follows from growth.",
-    "source_page": "essays/growth.md",
-    "date": "2012-09-01"
+    "text": "They were the most arrogant people I've met in my life. And I've met a lot of arrogant people. Even a VC friend of mine dislikes VCs. 'Assholes,' he says. ... It explains why they steal your ideas. Every founder knows that VCs will tell your secrets to your competitors if they end up investing in them. The only reason VCs are so sneaky is the giant deals they do. With so much at stake, they have to be devious.",
+    "source_page": "essays/venturecapital.md",
+    "date": "2005-03-01"
   },
   "claim_b": {
-    "text": "When I talk to a startup that's been operating for more than 8 or 9 months, the first thing I want to know is almost always the same: by default do they live or die? Half the founders I talk to don't know whether they're default alive or default dead.",
-    "source_page": "essays/aord.md",
-    "date": "2015-10-01"
+    "text": "I used to think of VCs as piratical: bold but unscrupulous. On closer acquaintance they turn out to be more like bureaucrats. They're more upstanding than I used to think (the good ones, at least), but less bold.",
+    "source_page": "essays/googles.md",
+    "date": "2008-04-01"
   },
-  "contradiction_summary": "In 2012 he argued growth was the only essential thing and the compass for every decision; in 2015 he conceded that without explicit runway awareness, growth alone can ride you off a cliff."
+  "contradiction_summary": "In 2005 he called VCs arrogant, sneaky, devious — they'd 'steal your ideas' and meet you only to brief competitors; in 2008 he conceded VCs were actually more upstanding than he'd thought, just bureaucratic and timid — and explicitly flagged the change with 'I used to think.'"
 }
