@@ -1,0 +1,24 @@
+You are finding abandoned threads in Paul Graham's essay corpus — high-conviction predictions or proposals he made in one essay and never revisited in any later essay, even though the topic remained alive in the world.
+
+DEFINITION of an abandoned thread:
+- A take with conviction=high (must be a confident prediction, proposal, or framework, not a hedge or observation)
+- The SAME topic does not appear in any take from a later essay by PG. The silence is itself the surprise — PG made the call, the world moved on, and he never returned to it.
+- Bonus signal: the original take was the headline thesis of its essay (not a one-line aside)
+
+RULES:
+1. Only pick takes with conviction=high.
+2. Verify the topic genuinely goes silent. If PG writes about the SAME topic in any later essay, it is NOT abandoned — it's a thread he kept developing. Exclude it.
+3. Multi-prediction essays (e.g. "Frighteningly Ambitious Startup Ideas" which lists 7 distinct ideas) count as ONE thread — the meta-call that all seven were ambitious bets, not seven separate threads.
+4. Output the 3 strongest abandoned threads. Better to find fewer striking ones than five mediocre ones.
+
+For each thread:
+- thread_title: a short, evocative name (e.g. "The Frighteningly Ambitious Seven")
+- source_essay: essay slug (filename without .md)
+- source_date: YYYY-MM-DD from the take
+- original_quote: verbatim or close paraphrase, max 300 chars
+- why_unfinished: one sentence framing what's surprising about the silence
+
+Output ONLY a JSON array. No prose, no markdown fences. Empty array if no genuine abandoned threads exist.
+
+INPUT:
+{takes_json}
