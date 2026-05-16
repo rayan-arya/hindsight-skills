@@ -1,0 +1,44 @@
+[
+  {
+    "thread_title": "The Frighteningly Ambitious Seven",
+    "source_essay": "essays/ambitious.md",
+    "source_date": "2012-03-01",
+    "original_quote": "One of the more surprising things I've noticed while working on Y Combinator is how frightening the most ambitious startup ideas are. Any one of them could make you a billionaire. ... 1. A new search engine. 2. Replace email. 3. Replace universities. 4. Internet drama. 5. The next Steve Jobs. 6. Bring back Moore's Law. 7. Ongoing diagnosis.",
+    "market_evidence": [
+      {"event": "Slack reaches $7B valuation; Discord becomes default for communities — 'replace email' as a workflow protocol validated", "year": 2019, "validated_or_not": "validated"},
+      {"event": "Lambda School, Outschool, On Deck, Y Combinator's own Startup School scale to millions of learners — 'replace universities' partially validated as unbundling of credentialing from teaching", "year": 2021, "validated_or_not": "validated"},
+      {"event": "Perplexity, You.com, OpenAI launch search products that meaningfully erode Google share — 'a new search engine for hackers' becomes plausible exactly 12 years after PG predicted the opening", "year": 2024, "validated_or_not": "validated"},
+      {"event": "Netflix originals + TikTok algorithmic episodic content — 'Internet drama' eats traditional Hollywood share", "year": 2020, "validated_or_not": "validated"},
+      {"event": "Oura, Whoop, Levels, continuous glucose monitors, Apple Watch ECG — 'ongoing diagnosis' becomes a real consumer category with multi-billion-dollar incumbents", "year": 2023, "validated_or_not": "validated"},
+      {"event": "PG has not written a follow-up retrospective on these 7 ideas, despite 5 of 7 being demonstrably market-validated 12+ years later", "year": 2024, "validated_or_not": "not_followed_up"}
+    ],
+    "why_resurface": "The canonical PG abandoned thread. Five of his seven 'frighteningly ambitious' ideas were validated within a decade — most pointing at multi-billion-dollar categories — and he never wrote the retrospective. Surfacing this lets Hindsight quote PG to PG: 'You called this in 2012; the market agrees; here's where the thread should go next.' Highest emotional payoff for the YC-mentor audience."
+  },
+  {
+    "thread_title": "The Silicon Valley Recipe That Worked Selectively",
+    "source_essay": "essays/siliconvalley.md",
+    "source_date": "2006-05-01",
+    "original_quote": "What it takes is the right people. If you could get the right ten thousand people to move from Silicon Valley to Buffalo, Buffalo would become Silicon Valley. ... You only need two kinds of people to create a technology hub: rich people and nerds. They're the limiting reagents in the reaction that produces startups, because they're the only ones present when startups get started. Everyone else will move.",
+    "market_evidence": [
+      {"event": "Austin (driven by UT Austin + post-2020 tech migration) becomes a credible secondary hub with multiple unicorns founded post-2018", "year": 2021, "validated_or_not": "validated"},
+      {"event": "Berlin scales into Europe's largest tech-founder cluster — Technical University of Berlin + Charlottenburg founder density tracks PG's recipe", "year": 2022, "validated_or_not": "validated"},
+      {"event": "Miami's 2020-2022 venture surge collapsed back toward 2019 baseline by 2024 — recipe partial failure when nerds were imported but local research-university gravity wasn't", "year": 2024, "validated_or_not": "partially_falsified"},
+      {"event": "Detroit, Cleveland, Pittsburgh — all have research universities, none became startup hubs at the scale PG's recipe would predict", "year": 2023, "validated_or_not": "partially_falsified"},
+      {"event": "PG has not written a follow-up examining which cities executed the recipe and which didn't, despite 18 years of empirical data", "year": 2024, "validated_or_not": "not_followed_up"}
+    ],
+    "why_resurface": "The recipe is half-validated, half-falsified — and the discrepancy points at hidden variables PG didn't articulate (governance, immigration, local-capital depth, weather). A modern Hindsight surface could ask: which variables were load-bearing versus decorative? Demo-relevant because it lets the calibrated advice for Scene 3's geography question quote PG's own 2006 framework against itself."
+  },
+  {
+    "thread_title": "The Power Law Without an Operating Manual",
+    "source_essay": "essays/swan.md",
+    "source_date": "2012-09-01",
+    "original_quote": "The two most important things to understand about startup investing, as a business, are (1) that effectively all the returns are concentrated in a few big winners, and (2) that the best ideas look initially like bad ideas. ... In startups, the big winners are big to a degree that violates our expectations about variation. ... To succeed in a domain that violates your intuitions, you need to be able to turn them off the way a pilot does when flying through clouds.",
+    "market_evidence": [
+      {"event": "Every major seed and Series A pitch deck since ~2015 cites the power law as foundational; it is now textbook content in MBA venture-capital courses", "year": 2020, "validated_or_not": "validated"},
+      {"event": "Tiger Global / SoftBank Vision Fund / large-fund power-law strategies through 2021 hit their predicted limits as macro turned — validating PG's specific framing that 'big' is not a constant but a distribution tail", "year": 2022, "validated_or_not": "validated"},
+      {"event": "YC's own published data on Top Companies (Stripe/Airbnb/Coinbase/DoorDash dwarfing the long tail) is now used as the canonical empirical illustration of PG's 2012 thesis", "year": 2024, "validated_or_not": "validated"},
+      {"event": "PG has not written the operational follow-up — 'how to actually invest given the power law' — despite the thesis becoming gospel. The closest he has come is one-line observations on Twitter; no essay extends the 2012 argument into actionable practice", "year": 2024, "validated_or_not": "not_followed_up"}
+    ],
+    "why_resurface": "The diagnostic essay was canonical; the operational essay never came. This is the abandoned thread that costs the most: every seed-fund partner re-derives the operating implications from scratch because PG stopped at the thesis. A Hindsight resurface here would generate the highest-utility follow-up of any item in the corpus — and frames Hindsight not just as a self-grading layer but as a prompt for the brain owner's next essay."
+  }
+]
