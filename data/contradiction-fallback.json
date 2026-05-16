@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "purpose": "Demo safety net for Scene 2.5. Used only if Track A's find-contradictions skill (A.6) produces mush at hour 8. Both takes hand-verified from corpus reading on 2026-05-16.",
+    "curator": "Track C (Keshav)",
+    "soft_contradiction": true,
+    "soft_contradiction_note": "C.5.5 spec disprefers 'obvious updates to better information' as contradictions. This pair is the strongest hand-verifiable PG flip in the corpus — growth.md frames growth as 'the ONLY essential thing,' aord.md frames runway awareness as also essential. PG himself never frames it as a flip, but the emphasis shift is substantive (priority of growth-rate vs default-alive). If A.6 finds a harder contradiction, prefer that over this."
+  },
+  "topic": "startup essentials",
+  "claim_a": {
+    "text": "A startup is a company designed to grow fast. The only essential thing is growth. Everything else we associate with startups follows from growth.",
+    "source_page": "essays/growth.md",
+    "date": "2012-09-01"
+  },
+  "claim_b": {
+    "text": "When I talk to a startup that's been operating for more than 8 or 9 months, the first thing I want to know is almost always the same: by default do they live or die? Half the founders I talk to don't know whether they're default alive or default dead.",
+    "source_page": "essays/aord.md",
+    "date": "2015-10-01"
+  },
+  "contradiction_summary": "In 2012 he argued growth was the only essential thing and the compass for every decision; in 2015 he conceded that without explicit runway awareness, growth alone can ride you off a cliff."
+}
