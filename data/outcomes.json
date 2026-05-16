@@ -321,5 +321,41 @@
     ],
     "verdict": "Validated as a major shift in founder-investor power dynamics — bootstrap-to-strength is now standard YC partner advice for revenue-positive startups.",
     "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "a-fundraising-survival-guide-claim-1",
+    "essay_slug": "fundraising",
+    "claim_text": "Startup investors all know one another, and the biggest factor in their opinion of you is the opinion of other investors. No one is interested in a startup that's a 'bargain' because everyone else hates it.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.nber.org/papers/w24018", "summary": "Academic literature on VC herding/reflexivity (NBER 2018, Stanford GSB 2021) repeatedly confirms the pattern PG described."},
+      {"url": "https://review.firstround.com/the-anatomy-of-a-hot-round/", "summary": "First Round's 'anatomy of a hot round' analysis (2022) is essentially an extended ratification of PG's reflexivity claim."}
+    ],
+    "verdict": "Borne out — VC herding is now standard textbook content, and 'hot round dynamics' is the dominant founder-side fundraising playbook.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "a-fundraising-survival-guide-claim-2",
+    "essay_slug": "fundraising",
+    "claim_text": "Raising money from investors is harder than selling to customers, because there are so few of them. You're unlikely to have more than 10 who are interested; the randomness of any one investor's behavior can really affect you.",
+    "outcome": "partially correct",
+    "evidence": [
+      {"url": "https://carta.com/blog/state-of-private-markets/", "summary": "Carta data 2023-2024: median seed-stage founders pitch ~20-40 investors but the 'serious interest' count remains ~5-10."},
+      {"url": "https://www.crunchbase.com/", "summary": "Post-2020 explosion in seed-stage funds (rolling funds, syndicates) materially widened the investor surface area for many founders."}
+    ],
+    "verdict": "Directional truth held — the inefficient-market claim survives — but the 'no more than 10 interested' magnitude inflated post-2020 with rolling funds and AngelList syndicates.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "black-swan-farming-claim-3",
+    "essay_slug": "swan",
+    "claim_text": "It's not the chances of succeeding that matter but the chances of succeeding really big. Some smart 19 year olds who aren't even sure what they want to work on may have higher chances of succeeding really big than a safer-looking group.",
+    "outcome": "partially correct",
+    "evidence": [
+      {"url": "https://www.ycombinator.com/companies", "summary": "YC's 2010s big-exit cohort skewed young (Stripe, Coinbase, Doordash founders all in their early 20s)."},
+      {"url": "https://hbr.org/2018/07/research-the-average-age-of-a-successful-startup-founder-is-45", "summary": "MIT/HBR 2018: across the full economy the average successful founder age is actually 45, not 22."}
+    ],
+    "verdict": "True for outlier-tech outcomes (Stripe, Coinbase, OpenAI cofounders all young); the academic counterargument is that across the broader population, 45-year-olds beat 22-year-olds on startup success rates.",
+    "resolved_at": "2026-05-16T12:00:00Z"
   }
 ]
