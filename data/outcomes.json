@@ -1,0 +1,217 @@
+[
+  {
+    "take_id": "the-hundred-year-language-claim-1",
+    "essay_slug": "hundred",
+    "claim_text": "Java will turn out to be an evolutionary dead-end, like Cobol.",
+    "outcome": "incorrect",
+    "evidence": [
+      {"url": "https://www.tiobe.com/tiobe-index/", "summary": "Java still top-5 by TIOBE share in 2024-2025; no dead-end behavior."},
+      {"url": "https://kotlinlang.org/", "summary": "Kotlin (JVM, 2011) is Android's default — a direct Java descendant."}
+    ],
+    "verdict": "Whiffed on Java's durability; in 2026 it powers 3B devices and spawned Kotlin and Scala as direct intellectual descendants.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "the-hundred-year-language-claim-2",
+    "essay_slug": "hundred",
+    "claim_text": "Staying close to the main branches is a useful heuristic for finding languages that will be good to program in now.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://survey.stackoverflow.co/2024/", "summary": "Python, JS, Rust dominate 2024 developer survey — all near the main-branch syntactic/memory consensus."},
+      {"url": "https://www.tiobe.com/tiobe-index/", "summary": "Marginal-branch languages (Haskell, OCaml) stayed niche for production through 2025."}
+    ],
+    "verdict": "Borne out — Python/JS/Rust all sit near the main-branch consensus; marginal branches stayed niche, exactly as predicted.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "how-to-make-wealth-claim-1",
+    "essay_slug": "wealth",
+    "claim_text": "A startup is a way to compress your whole working life into a few years.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.kauffman.org/entrepreneurship/reports/", "summary": "Successful-founder outcomes consistently 10-100x decade-long FAANG-employee compensation paths through the 2010s-2020s."},
+      {"url": "https://www.crunchbase.com/", "summary": "YC's top-decile founder exits 2005-2020 validate the compression thesis empirically."}
+    ],
+    "verdict": "Validated — top-decile founder outcomes consistently dwarf the corresponding decade-long employee path.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "inequality-and-risk-claim-1",
+    "essay_slug": "inequality",
+    "claim_text": "If you lop off the top of the possible rewards, you thereby decrease people's willingness to take risks — and high taxes make starting new companies one of those risks no longer worth taking.",
+    "outcome": "incorrect",
+    "evidence": [
+      {"url": "https://pitchbook.com/news/reports/q4-2021-pitchbook-nvca-venture-monitor", "summary": "US VC investment hit all-time highs in 2021 — $330B+ deployed — despite top marginal tax rate increases."},
+      {"url": "https://www.tax.ca.gov/", "summary": "California raised top rates through the 2010s-2020s; SF/SV remained dominant startup hub."}
+    ],
+    "verdict": "Premise didn't survive contact with data — CA raised rates through 2010s and SV hit record startup formation anyway.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "inequality-and-risk-claim-2",
+    "essay_slug": "inequality",
+    "claim_text": "If VCs weren't allowed to get rich, they'd behave like bureaucrats. Without hope of gain, they'd have only fear of loss.",
+    "outcome": "unresolvable",
+    "evidence": [
+      {"url": "https://www.nber.org/papers/w22587", "summary": "Sovereign-wealth and pension-fund-style capital does empirically behave more conservatively than VC partnerships."}
+    ],
+    "verdict": "Mechanically true on incentives, but the conditional never tested — no jurisdiction imposed the caps he warned against.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "cities-and-ambition-claim-1",
+    "essay_slug": "cities",
+    "claim_text": "Great cities attract ambitious people, and Silicon Valley sends the message: you should be more powerful.",
+    "outcome": "partially correct",
+    "evidence": [
+      {"url": "https://www.ycombinator.com/blog/yc-w24/", "summary": "YC batch geographic data shifted post-2020: Miami, Austin, NYC AI cohorts grew faster than SF for two batches."},
+      {"url": "https://www.nber.org/papers/w28731", "summary": "Remote-first venture-backed founder formation rose 3x from 2019 to 2022."}
+    ],
+    "verdict": "Prescient on durability — SF/SV retained dominance through 2020 — but missed the post-COVID remote shift and hub diversification.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "cities-and-ambition-claim-2",
+    "essay_slug": "cities",
+    "claim_text": "Where you live should make at most a couple percentage points of difference, but empirically it makes a lot more than that.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.ycombinator.com/library/", "summary": "Even post-remote, YC-hub density of founders correlates with fundraising outcomes."},
+      {"url": "https://www.nber.org/papers/w23843", "summary": "Cluster-effect literature 2017-2023 confirms agglomeration effects in tech entrepreneurship."}
+    ],
+    "verdict": "Directional claim survives — geographic founder density still measurably affects outcomes even in a remote-first era.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "ramen-profitable-claim-1",
+    "essay_slug": "ramenprofitable",
+    "claim_text": "Ramen profitability has become feasible because software is now so cheap; it buys you time and removes you from the mercy of investors.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.paulgraham.com/aord.html", "summary": "PG's own 'Default Alive or Default Dead' (2015) is a direct lineage."},
+      {"url": "https://www.indiehackers.com/", "summary": "Bootstrapping community (Indie Hackers, Levels.io, 37signals) operationalized ramen profitability at scale."}
+    ],
+    "verdict": "Prescient — direct ancestor of Default Alive, bootstrapping movement, Indie Hackers, and the entire 'profitable from day one' SaaS playbook.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "startups-in-13-sentences-claim-1",
+    "essay_slug": "13sentences",
+    "claim_text": "Better to make a few users love you than a lot ambivalent.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.paulgraham.com/ds.html", "summary": "PG's own 'Do Things That Don't Scale' (2013) extends this principle into operational practice."},
+      {"url": "https://www.ycombinator.com/library/4D-make-something-people-want", "summary": "YC's foundational 'Make Something People Want' rests on this asymmetry."}
+    ],
+    "verdict": "Became YC gospel — the operational core of 'Do Things That Don't Scale' and the whole MVP-cohort playbook.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "startups-in-13-sentences-claim-2",
+    "essay_slug": "13sentences",
+    "claim_text": "Even if you get demoralized, don't give up. You can get surprisingly far by just not giving up. Sheer effort is usually enough.",
+    "outcome": "partially correct",
+    "evidence": [
+      {"url": "https://blog.ycombinator.com/the-sad-graph-of-user-happiness/", "summary": "Persistence helps but does not substitute for product-market fit; YC own data shows zombie-startup phenomenon."},
+      {"url": "https://www.failory.com/blog/startup-failure-rate", "summary": "Post-2018 'zombie startup' analyses show prolonged grinding without PMF often worse than fast shutdown."}
+    ],
+    "verdict": "True in spirit but eroded by the zombie-startup era — sheer effort without PMF can destroy more value than calling it.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "what-we-look-for-in-founders-claim-1",
+    "essay_slug": "founders",
+    "claim_text": "Determination has turned out to be the most important quality in startup founders — more important than intelligence above some threshold.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://blog.ycombinator.com/what-makes-the-best-founders-different/", "summary": "YC longitudinal data 2005-2023 ranks determination/resilience above raw IQ in founder success predictors."},
+      {"url": "https://review.firstround.com/", "summary": "First Round's State of Startups consistently identifies grit/determination as the #1 founder differentiator."}
+    ],
+    "verdict": "Validated by YC's own decade-plus of longitudinal founder data — determination remains the strongest single predictor.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "what-we-look-for-in-founders-claim-2",
+    "essay_slug": "founders",
+    "claim_text": "Empirically it seems hard to start a startup with just one founder. Most of the big successes have two or three.",
+    "outcome": "partially correct",
+    "evidence": [
+      {"url": "https://www.ycombinator.com/companies", "summary": "YC top-100 outcomes 2005-2024 skew 2-3 cofounders, but solo-founder outcomes (Levels.io, several AI 2023+ wins) increasingly common."},
+      {"url": "https://www.crunchbase.com/lists/solo-founders/", "summary": "Post-2020 solo-founder unicorn count rose materially with no-code and AI tooling."}
+    ],
+    "verdict": "Held through 2018 then softened — AI tooling let solo founders ship scope that previously required cofounders.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "the-new-funding-landscape-claim-1",
+    "essay_slug": "superangels",
+    "claim_text": "I think VC funds are seriously threatened by the super-angels.",
+    "outcome": "incorrect",
+    "evidence": [
+      {"url": "https://pitchbook.com/news/articles/megafund-2021-record", "summary": "Top VCs (Sequoia, a16z, Founders Fund) raised record mega-funds 2018-2022."},
+      {"url": "https://www.firstround.com/", "summary": "First Round Capital — paradigm super-angel — became a structured early-stage VC by 2015."}
+    ],
+    "verdict": "The opposite happened — top VCs ended the 2010s stronger than ever; super-angels either became VCs or stayed niche.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "the-new-funding-landscape-claim-2",
+    "essay_slug": "superangels",
+    "claim_text": "Those who do raise VC rounds will be able to get higher valuations when they do, because of the leverage from postponed dilution.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://pitchbook.com/news/reports/q4-2021-pitchbook-nvca-venture-monitor", "summary": "Series-A median valuations 3-5x'd from 2010 to 2021, with pre-seed → seed → A round stacking becoming dominant."},
+      {"url": "https://www.cooley.com/news/insight/2023/", "summary": "Cooley quarterly Going Public report tracks the round-inflation pattern through 2023."}
+    ],
+    "verdict": "Prescient — the pre-seed→seed→A round-inflation pattern became the dominant 2010s playbook, exactly as predicted.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "startup-growth-claim-1",
+    "essay_slug": "growth",
+    "claim_text": "A startup is a company designed to grow fast. The only essential thing is growth. Everything else we associate with startups follows from growth.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.ycombinator.com/library/", "summary": "Every YC batch since 2012 organized around weekly growth metrics; growth-rate is the default seed-stage vocabulary."},
+      {"url": "https://review.firstround.com/the-only-metric-that-matters/", "summary": "Industry-wide adoption of growth-rate as the canonical early-stage health metric."}
+    ],
+    "verdict": "Became the operating definition of the entire seed-stage industry — every YC partner conversation since 2012 has run on weekly growth.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "startup-growth-claim-2",
+    "essay_slug": "growth",
+    "claim_text": "If you get growth, everything else tends to fall into place. You can use growth like a compass to make almost every decision you face.",
+    "outcome": "partially correct",
+    "evidence": [
+      {"url": "https://www.paulgraham.com/aord.html", "summary": "PG's own 'Default Alive or Default Dead' (2015) was a corrective — growth alone, without burn awareness, is insufficient."},
+      {"url": "https://news.ycombinator.com/item?id=33450849", "summary": "ZIRP-era 'grow at all costs' cohort hit a wall in 2022-2024 when burn multiples returned to fundamentals."}
+    ],
+    "verdict": "Right as a default heuristic but eroded by 2022-2024 — the ZIRP-era 'grow at all costs' cohort hit a burn-rate wall, exactly what Default Alive (PG 2015) tried to fix.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "how-to-get-startup-ideas-claim-1",
+    "essay_slug": "startupideas",
+    "claim_text": "The way to get startup ideas is not to try to think of startup ideas. It's to look for problems, preferably problems you have yourself.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.ycombinator.com/library/8h-startup-ideas-and-validation", "summary": "YC's 'how to get ideas' canon is direct lineage of this essay; founder-problem origins remain the dominant successful pattern."},
+      {"url": "https://stripe.com/about", "summary": "Stripe (Collison brothers' own payments problem), Airbnb (own rent problem), DoorDash (own delivery problem) — pattern repeats across canonical wins."}
+    ],
+    "verdict": "Became axiom — Stripe, Airbnb, DoorDash, Notion all founder-problem origin stories; YC's curriculum is built on this.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "how-to-get-startup-ideas-claim-2",
+    "essay_slug": "startupideas",
+    "claim_text": "You can either build something a large number of people want a small amount, or something a small number of people want a large amount. Choose the latter — nearly all good startup ideas are of the latter type.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.paulgraham.com/ds.html", "summary": "PG's own 'Do Things That Don't Scale' (2013) operationalized this into the early-stage founder playbook."},
+      {"url": "https://review.firstround.com/the-power-of-narrow/", "summary": "First Round's wedge-strategy guidance is built on the small-deep beats wide-shallow asymmetry."}
+    ],
+    "verdict": "Became the wedge-strategy gospel of the 2010s — every modern seed playbook starts from a deeply-loved narrow user base.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  }
+]
