@@ -136,10 +136,12 @@ function matchScore(
  * matches, provided it clears `threshold`. Returns null when none qualifies.
  */
 export function findCuratedMatch(
-  take: Take,
+  take: Take | null | undefined,
   curated: readonly CuratedOutcome[],
   threshold: number = DEFAULT_MATCH_THRESHOLD,
 ): CuratedMatch | null {
+  // Defensive: never throw on a missing or malformed take (A.3 "never throws").
+  if (!take || typeof take.claim_text !== "string") return null;
   const takeNorm = normalize(take.claim_text);
   const takeTokens = tokenize(take.claim_text);
   let best: CuratedMatch | null = null;
@@ -252,6 +254,17 @@ async function logUnmatched(take: Take): Promise<void> {
   }
 }
 
+/** True when `t` carries the fields resolve-outcomes reads off a take. */
+function isUsableTake(t: unknown): t is Take {
+  if (typeof t !== "object" || t === null) return false;
+  const x = t as Record<string, unknown>;
+  return (
+    typeof x.claim_text === "string" &&
+    x.claim_text.trim().length > 0 &&
+    typeof x.essay_slug === "string"
+  );
+}
+
 /**
  * resolve-outcomes — look up the curated Outcome for one take.
  *
@@ -263,7 +276,17 @@ async function logUnmatched(take: Take): Promise<void> {
 export async function runSkill(
   input: ResolveOutcomesInput,
 ): Promise<ResolveOutcomesOutput> {
-  const { take } = input;
+  // Tolerate a missing or malformed payload — resolve-outcomes must never
+  // throw (A.3 spec). A request with no usable `take` resolves to null.
+  const obj = input as unknown as Record<string, unknown> | null | undefined;
+  const rawTake: unknown = obj == null ? undefined : obj.take;
+  if (!isUsableTake(rawTake)) {
+    console.error(
+      "[resolve-outcomes] request has no usable `take` field — returning { outcome: null }",
+    );
+    return { outcome: null };
+  }
+  const take = rawTake;
   const curated = await loadCuratedOutcomes();
   const match = findCuratedMatch(take, curated, DEFAULT_MATCH_THRESHOLD);
   if (match === null) {
