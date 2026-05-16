@@ -1,0 +1,68 @@
+{
+  "user": "paul-graham",
+  "corpus_size": 228,
+  "total_takes": 181,
+  "resolved_takes": 15,
+  "overall_hit_rate": 0.667,
+  "by_domain": [
+    {
+      "domain": "founder-behavior",
+      "hit_rate": 0.714,
+      "n": 7
+    },
+    {
+      "domain": "startup-tactics",
+      "hit_rate": 0.7,
+      "n": 5
+    },
+    {
+      "domain": "tech-trends",
+      "hit_rate": 0.5,
+      "n": 2
+    },
+    {
+      "domain": "geography",
+      "hit_rate": 0.5,
+      "n": 1
+    }
+  ],
+  "patterns": [
+    "Founder-behavior calls are highly reliable: PG's high-conviction claims about founder psychology and startup definition hit ~0.71, with 5 fully correct out of 7 graded takes.",
+    "Startup-tactics calls are mostly right but misfire on competitive-dynamics predictions — 4/5 correct, but the super-angels-vs-VC call inverted completely within a decade.",
+    "PG over-extrapolates from static structural conditions: both his VC-threat and tax-risk-appetite claims ignored how ecosystems adapt, producing his clearest misses.",
+    "Solo-founder and cofounder claims were correct for 10+ years but have softened post-2018 as AI tooling eroded the scope advantage of multiple founders — a rare time-bounded partial miss."
+  ],
+  "highlight_takes": [
+    {
+      "take_id": "inequality-and-risk-claim-2",
+      "claim_text": "Because risk and reward must be proportionate, decreasing the maximum possible rewards decreases people's willingness to take risks.",
+      "verdict_summary": "Premise didn't survive contact with data — CA raised rates through 2010s and SV hit record startup formation anyway."
+    },
+    {
+      "take_id": "the-new-funding-landscape-claim-3",
+      "claim_text": "So I think VC funds are seriously threatened by the super-angels.",
+      "verdict_summary": "The opposite happened — top VCs ended the 2010s stronger than ever; super-angels either became VCs or stayed niche."
+    },
+    {
+      "take_id": "cities-and-ambition-claim-1",
+      "claim_text": "Great cities attract ambitious people and send them messages about what's worth doing — and these messages differ meaningfully by city.",
+      "verdict_summary": "Prescient on durability — SF/SV retained dominance through 2020 — but missed the post-COVID remote shift and hub diversification."
+    },
+    {
+      "take_id": "what-we-look-for-in-founders-claim-6",
+      "claim_text": "It is empirically hard to start a startup with just one founder; most big successes have two or three founders.",
+      "verdict_summary": "Held through 2018 then softened — AI tooling let solo founders ship scope that previously required cofounders."
+    },
+    {
+      "take_id": "the-18-mistakes-that-kill-startups-claim-2",
+      "claim_text": "Single founders are at a serious disadvantage; starting a startup is too hard for one person, and few successful startups were founded by just one person.",
+      "verdict_summary": "Held through 2018 then softened — AI tooling and no-code platforms unlocked solo-founder scope that previously required cofounders."
+    }
+  ],
+  "verdict_distribution": {
+    "correct": 8,
+    "partial": 4,
+    "incorrect": 3,
+    "unresolvable": 0
+  }
+}

@@ -84,15 +84,16 @@ applies within it.
 
 ## Current state & next step
 
-Done: **A.0a** (types repo), **A.0b** (this repo scaffold), **A.1** (skill scaffolds — all five
-`runSkill`s return hardcoded example output matching their contract).
+Done: **A.0–A.1** (types repo, scaffold, skill scaffolds). **A.2 `extract-takes`**,
+**A.3 `resolve-outcomes`**, **A.4 `hindsight-profile`**, **A.5 `calibrated-advise`** —
+all shipped with real logic, each with a live check harness (`npm run <skill>:check`).
 
-**Next: A.2 — `extract-takes` real logic**, planned via `/autoplan` (demo-critical skill). It
-reads a brain page, calls Claude with the extract-takes prompt, and returns `Take[]`. Validate
-against `data/gold-standard.md` (3 hand-marked essays).
+**Next: A.6 — `find-contradictions`** (the last scaffold). Then A.7 merge + end-to-end
+integration test.
 
-Then A.3 `resolve-outcomes`, A.4 `hindsight-profile`, A.5 `calibrated-advise` (+ZeroEntropy
-+The Hog), A.6 `find-contradictions` (v2), A.7 merge + end-to-end integration test.
+Demo fixtures: `data/captured/profile.json` and `data/captured/advice.json` hold a live
+`hindsight-profile` Profile and a `calibrated-advise` AdviceResult — the extension loads
+these in DEMO_MODE so the demo never depends on the live pipeline.
 
 ## Cross-track integration notes
 
