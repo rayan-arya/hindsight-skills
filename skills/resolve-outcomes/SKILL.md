@@ -2,7 +2,10 @@
 
 ## Description
 
-Grades a single take against public evidence and returns an outcome verdict.
+Looks up the curated outcome for a single take in `data/outcomes.json` and
+returns it. Joins on `essay_slug` + `claim_text` overlap, never on the
+`-claim-N` index in `take.id`. Returns `outcome: null` when the take has no
+curated row (distinct from the `unresolvable` verdict).
 
 ## Input
 
@@ -17,7 +20,7 @@ Grades a single take against public evidence and returns an outcome verdict.
 `ResolveOutcomesOutput` from `@hindsight/types`:
 
 ```json
-{ "outcome": "Outcome" }
+{ "outcome": "Outcome | null" }
 ```
 
 ## Invocation

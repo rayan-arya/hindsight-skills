@@ -12,7 +12,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint .",
     "qa": "npm run typecheck && npm run lint",
-    "extract-takes:check": "tsx --env-file-if-exists=.env skills/extract-takes/check-gold-standard.ts"
+    "extract-takes:check": "tsx --env-file-if-exists=.env skills/extract-takes/check-gold-standard.ts",
+    "resolve-outcomes:audit": "tsx --env-file-if-exists=.env skills/resolve-outcomes/audit-matching.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.96.0",

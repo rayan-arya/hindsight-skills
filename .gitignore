@@ -7,3 +7,6 @@ dist/
 data/scripts/.scrape-state.json
 data/scripts/__pycache__/
 *.pyc
+
+# Track A — resolve-outcomes diagnostic log (unmatched takes, regenerated each run)
+data/notes/unmatched-outcomes.log
