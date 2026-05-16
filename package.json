@@ -15,7 +15,8 @@
     "extract-takes:check": "tsx --env-file-if-exists=.env skills/extract-takes/check-gold-standard.ts",
     "resolve-outcomes:audit": "tsx --env-file-if-exists=.env skills/resolve-outcomes/audit-matching.ts",
     "hindsight-profile:check": "tsx --env-file-if-exists=.env skills/hindsight-profile/check-profile.ts",
-    "calibrated-advise:check": "tsx --env-file-if-exists=.env skills/calibrated-advise/check-advise.ts"
+    "calibrated-advise:check": "tsx --env-file-if-exists=.env skills/calibrated-advise/check-advise.ts",
+    "find-contradictions:check": "tsx --env-file-if-exists=.env skills/find-contradictions/check-contradictions.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.96.0",
