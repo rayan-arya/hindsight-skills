@@ -1,0 +1,8 @@
+# Python deps for Track C scripts (scrape, fresh-signal, probe).
+# Install with: pip3 install -r data/scripts/requirements.txt
+requests>=2.32
+beautifulsoup4>=4.13
+markdownify>=0.13
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.0
