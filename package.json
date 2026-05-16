@@ -11,7 +11,8 @@
     "start": "node --env-file-if-exists=.env dist/server/index.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint .",
-    "qa": "npm run typecheck && npm run lint"
+    "qa": "npm run typecheck && npm run lint",
+    "extract-takes:check": "tsx --env-file-if-exists=.env skills/extract-takes/check-gold-standard.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.96.0",
