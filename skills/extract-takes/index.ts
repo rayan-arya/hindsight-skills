@@ -15,7 +15,7 @@ import type {
  */
 
 const MODEL = "claude-sonnet-4-6";
-const MAX_TOKENS = 4096;
+const MAX_TOKENS = 8000;
 
 const CONVICTIONS: readonly Conviction[] = ["high", "medium", "low"];
 const DOMAINS: readonly TakeDomain[] = [
@@ -61,6 +61,8 @@ GRANULARITY — extract the essay's MAJOR theses, not every sentence:
 - If the author states the same point several times, or builds one thesis from parts (a general claim followed by per-case illustrations), that is ONE take. Use the clearest, most general statement.
 - Supporting observations and elaborations of a take you already captured are not separate takes.
 Example: in the cities essay, PG argues that each city sends a unique message about what matters. He illustrates this with Cambridge (intellect), New York (money), Florence in 1500 (painting), etc. This is ONE take — 'cities send strong messages about what matters' — illustrated by multiple examples. Not five separate takes about each city.
+
+For each essay, ALSO ensure the essay's broadest 1-2 theses are captured even if they overlap with narrower claims you've already extracted. The broadest version of a thesis is the most useful one.
 
 For each gradeable claim, extract:
 - claim_text: the exact quote or close paraphrase (max 200 chars)
