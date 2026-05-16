@@ -1,88 +1,72 @@
 # Highlight-Take Candidates (Profile view hero section)
 
-**For:** `hindsight-profile` skill (A.4) to populate `profile.highlight_takes[]`,
-which `ProfileView` renders in Scene 2 of the demo.
+**Updated 2:43 PT post-A.4.** A.4 produced 4 sharp patterns and a 67% hit
+rate over a 12-outcome calibration sample. This file ranks the highlight
+takes that should populate `profile.highlight_takes[]` for ProfileView.
 
-**Curator:** Track C (Keshav)
-**Source:** `data/outcomes.json` — these are 5 verdicts strong enough to make
-a judge react, ranked by demo punch.
+**Orphaned takes (removed from consideration — extract-takes didn't surface
+matching claim_text):**
+- `ramen-profitable-claim-1` (was Tier 1) — essay `ramenprofitable` fully orphaned
+- `startup-growth-claim-1` (was Tier 1) — essay `growth` fully orphaned
+- `how-to-make-wealth-claim-1` — essay `wealth` orphaned
+- `how-people-get-rich-now-claim-1` — essay `richnow` orphaned
+- `why-startups-condense-in-america-claim-1` — essay `america` orphaned
 
-The bar: every verdict should be quotable, specific, and emotionally
-satisfying to read aloud. "He was kinda right" is forbidden. Each one
-either lands as **prescient**, **missed**, or **viscerally specific**.
+15 of my 30 outcomes attached. The 5 below are all in the attached set.
 
 ---
 
-## Tier 1 — must include (these are the show)
+## Recommended composition (5 picks, top→bottom in ProfileView)
 
-### 1. Ramen Profitable (2009) — **prescient**
-- `take_id`: `ramen-profitable-claim-1`
-- **Verdict:** "Direct ancestor of Default Alive, the bootstrapping movement, Indie Hackers, and the entire 'profitable from day one' SaaS playbook."
-- **Why it lands:** Every YC founder knows this term. Hearing the system label it "prescient" with a 17-year hindsight is the closest thing to a chef's-kiss moment in the corpus.
-
-### 2. Java as Evolutionary Dead-End (2003) — **missed**
+### 1. Java as Evolutionary Dead-End (2003) — **missed**
 - `take_id`: `the-hundred-year-language-claim-1`
-- **Verdict:** "Whiffed on Java's durability; in 2026 it powers 3B devices and spawned Kotlin and Scala as direct intellectual descendants."
-- **Why it lands:** A famously confident PG prediction that aged badly. Hearing the system call out a miss this clearly demonstrates calibration — not just flattery.
+- **Verdict:** Whiffed on Java's durability; in 2026 it powers 3B devices and spawned Kotlin and Scala as direct intellectual descendants.
+- **Pattern hit:** P4 (high-conviction macro/structural call that backfired).
+- **Why it opens:** Famously confident PG prediction that aged badly — a sharp opening miss telegraphs "this system isn't sycophantic."
 
-### 3. Super-Angels Threaten VCs (2010) — **missed**
+### 2. Super-Angels Threaten VCs (2010) — **missed**
 - `take_id`: `the-new-funding-landscape-claim-1`
-- **Verdict:** "The opposite happened — top VCs ended the 2010s stronger than ever; super-angels either became VCs or stayed niche."
-- **Why it lands:** Punchy, specific, and the audience (a VC) knows it's true.
+- **Verdict:** The opposite happened — top VCs ended the 2010s stronger than ever; super-angels either became VCs or stayed niche.
+- **Pattern hit:** P2 (market-structure overconfidence) and P4.
+- **Why second:** YC-relevant miss; reinforces the macro/structural blind spot before the prescient calls land.
 
-## Tier 2 — strong alternates
-
-### 4. Geographic Concentration (2008) — **partial / time-stamped**
-- `take_id`: `cities-and-ambition-claim-1`
-- **Verdict:** "Prescient on durability — SF/SV retained dominance through 2020 — but missed the post-COVID remote shift and hub diversification."
-- **Why it lands:** Sets up the calibration "blind spot" that Scene 3's demo question should target (geographic shifts).
-- **Critical for Scene 3 bridge.**
-
-### 5. Startup = Growth (2012) — **prescient**
-- `take_id`: `startup-growth-claim-1`
-- **Verdict:** "Became the operating definition of the entire seed-stage industry — every YC partner conversation since 2012 has run on weekly growth."
-- **Why it lands:** Demonstrates the system catches *foundational* correct calls, not just easy ones.
-
-## Tier 3 — backup if any of T1/T2 needs swapping
-
-### 6. Black Swan Power Law (2012) — **prescient**
-- `take_id`: `black-swan-farming-claim-1`
-- **Verdict:** "Canonical — the VC power law is now the foundation of every seed-fund pitch deck, exactly as PG framed it in 2012."
-
-### 7. Best Ideas Look Bad (2012) — **prescient**
+### 3. Best Ideas Look Bad (2012) — **prescient**
 - `take_id`: `black-swan-farming-claim-2`
-- **Verdict:** "Validated repeatedly — Airbnb, Stripe, Coinbase, Cloudflare all had 'this is crazy' reception, then became foundational."
+- **Verdict:** Validated repeatedly — Airbnb, Stripe, Coinbase, Cloudflare all had "this is crazy" reception, then became foundational.
+- **Pattern hit:** P1 (right on startup tactics, high domain hit rate).
+- **Why third:** Pivots the visual from misses to hits at the right moment in Scene 2 reading order.
 
-### 8. Airbnb Skepticism (2010) — **prescient meta-claim**
-- `take_id`: `what-we-look-for-in-founders-claim-3`
-- **Verdict:** "The skepticism aged terribly and the underlying meta-claim (fund great founders even when the idea seems crazy) aged perfectly — Airbnb became YC's defining $100B case study."
-- **Note:** Self-aware/recursive — PG admitting he was wrong about a YC investment that became the canonical YC case study.
+### 4. Cofounder Count Erosion (2010) — **partially correct / time-stamped**
+- `take_id`: `what-we-look-for-in-founders-claim-2`
+- **Verdict:** Held through 2018 then softened — AI tooling and no-code platforms unlocked solo-founder scope that previously required cofounders.
+- **Pattern hit:** P3 (founder-behavior call slipped when tooling changed).
+- **Why fourth:** Operationalizes Pattern 3 with a quotable concrete miss.
 
----
-
-## Recommended composition for `profile.highlight_takes`
-
-Use 5 of these in this order (top to bottom in the ProfileView card grid):
-
-1. **Ramen Profitable** (prescient) — opens with a win
-2. **Super-Angels Threaten VCs** (missed) — first calibration moment
-3. **Startup = Growth** (prescient) — biggest call he made
-4. **Geographic Concentration** (partial) — sets up Scene 3 bridge
-5. **Java as Dead-End** (missed) — closing miss that primes the audience for "what other blind spots does he have?"
-
-This sequence is intentional: alternating prescient/missed/prescient/partial/missed
-creates emotional momentum and *earns* the calibration narrative.
+### 5. Power Law Concentrates Returns (2012) — **prescient / canonical**
+- `take_id`: `black-swan-farming-claim-1`
+- **Verdict:** Canonical — the VC power law is now the foundation of every seed-fund pitch deck, exactly as PG framed it in 2012.
+- **Pattern hit:** P1.
+- **Why closes:** Strong note to land on — a foundational call that's still true and central to PG's worldview today.
 
 ---
 
-## Pattern statements likely to emerge from this set
+## Sequence rationale
 
-If `hindsight-profile` generates patterns from these takes plus the
-broader 30-outcome set, the natural language statements are:
+Reading order: **miss → miss → hit → partial → hit**. The two misses up
+front make the system look honest. The recovery to a prescient call mid-card
+keeps the audience emotionally with PG. The partial in slot 4 sets up the
+"tooling changes the answer" framing for Scene 3. The closing power-law
+hit lets us pivot to Scene 3 with PG looking smart in the dimension we're
+about to test (calibrated advice).
 
-1. "Consistently right about startup tactics — 87% across 8 takes — and especially strong on lean/bootstrap dynamics."
-2. "Mixed on macro tech and investor-landscape timing (~50%) — often catches the directional signal but mis-times magnitude."
-3. "Has under-weighted geographic shifts since 2020 — the post-COVID hub diversification kept catching him off-guard."
-4. "Whiffs disproportionately on ecosystem-durability calls — Java, super-angels, founder-visa-as-SV-rival all aged poorly."
+## How this maps to the 4 patterns A.4 surfaced
 
-Pattern #3 is the one Scene 3's demo question should fire on.
+| A.4 pattern | Supporting highlight takes |
+|---|---|
+| P1: Right on startup tactics | #3, #5 |
+| P2: Wrong on market-structure | #2 |
+| P3: Founder-behavior + tooling | #4 |
+| P4 ⭐: High conviction → backfires on macro/structural | #1, #2 |
+
+Every pattern statement is supported by at least one visible highlight take —
+no air in the calibration card.
