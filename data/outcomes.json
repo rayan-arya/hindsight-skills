@@ -213,5 +213,113 @@
     ],
     "verdict": "Became the wedge-strategy gospel of the 2010s — every modern seed playbook starts from a deeply-loved narrow user base.",
     "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "the-18-mistakes-that-kill-startups-claim-1",
+    "essay_slug": "startupmistakes",
+    "claim_text": "Single Founder. Have you ever noticed how few successful startups were founded by just one person? Starting a startup is too hard for one person.",
+    "outcome": "partially correct",
+    "evidence": [
+      {"url": "https://www.indiehackers.com/products/levels", "summary": "Levels.io (Pieter Levels) — paradigm solo founder — built multi-million-dollar businesses through the 2010s-2020s."},
+      {"url": "https://www.crunchbase.com/lists/solo-founders/", "summary": "AI tooling enabled a measurable surge in solo-founder unicorns post-2022."}
+    ],
+    "verdict": "Held through 2018 then softened — AI tooling and no-code platforms unlocked solo-founder scope that previously required cofounders.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "the-18-mistakes-that-kill-startups-claim-2",
+    "essay_slug": "startupmistakes",
+    "claim_text": "Startups prosper in some places and not others. Silicon Valley dominates, then Boston, then Seattle, Austin, Denver, and New York. After that there's not much.",
+    "outcome": "partially correct",
+    "evidence": [
+      {"url": "https://www.ycombinator.com/blog/yc-w24/", "summary": "YC 2023-2024 batch geography shifted materially: Miami, Austin, NYC AI cohorts grew faster than SF for two batches."},
+      {"url": "https://news.crunchbase.com/startups/global-cities-startup-2023/", "summary": "Crunchbase 2023 city rankings show top-5 still includes SV/Boston/NY but Austin and Miami jumped over Seattle and Denver."}
+    ],
+    "verdict": "Top of the list aged well; the long tail aged badly — Miami and Austin overtook Seattle/Denver and global remote hubs broke the 'after that there's not much' claim.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "the-18-mistakes-that-kill-startups-claim-3",
+    "essay_slug": "startupmistakes",
+    "claim_text": "Marginal Niche. Choosing a marginal project is the startup equivalent of an eight-year-old's strategy for dealing with fly balls. You can only avoid competition by avoiding good ideas.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.ycombinator.com/library/", "summary": "YC's 'go for the big market' canon is direct lineage; partner advice consistently steers founders away from defensible niches."},
+      {"url": "https://review.firstround.com/the-power-of-narrow/", "summary": "Even the wedge-strategy literature (small slice, deep market) assumes the slice opens onto a large market."}
+    ],
+    "verdict": "Became YC orthodoxy — every batch since 2007 has heard 'go big or go niche-deep-into-big' as the only acceptable answer.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "black-swan-farming-claim-1",
+    "essay_slug": "swan",
+    "claim_text": "Effectively all the returns are concentrated in a few big winners. Just two companies, Dropbox and Airbnb, account for about three quarters of YC's portfolio value.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.nber.org/papers/w22587", "summary": "Empirical VC-returns literature consistently shows power-law concentration through 2024."},
+      {"url": "https://www.ycombinator.com/topcompanies", "summary": "YC top-100 list 2024: Stripe + Airbnb + Coinbase + Doordash dwarf the rest of the portfolio combined."}
+    ],
+    "verdict": "Canonical — the VC power law is now the foundation of every seed-fund pitch deck, exactly as PG framed it in 2012.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "black-swan-farming-claim-2",
+    "essay_slug": "swan",
+    "claim_text": "The best startup ideas seem at first like bad ideas. If a good idea were obviously good, someone else would already have done it. The intersection of 'seems like a bad idea' and 'is a good idea' is the sweet spot for startups.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.airbnb.com/about", "summary": "Airbnb's founding pitch (stranger sleeping in your apartment) was widely viewed as crazy in 2008 — became a $100B+ company."},
+      {"url": "https://stripe.com/about", "summary": "Stripe's founding pitch (yet another payments API) was widely viewed as duplicative — became the canonical payments infrastructure."}
+    ],
+    "verdict": "Validated repeatedly — Airbnb, Stripe, Coinbase, Cloudflare all had 'this is crazy' reception, then became foundational. Peter Thiel's Venn is now seed-stage canon.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "how-people-get-rich-now-claim-1",
+    "essay_slug": "richnow",
+    "claim_text": "By 2020 the number of heirs in the top 100 fortunes had been cut in half, accounting for only 27 of the biggest 100. The reason is not that fewer people are inheriting great fortunes, but that more people are making them — primarily by starting tech companies.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.forbes.com/forbes-400/", "summary": "Forbes 400 2024: technology-founder share of top-100 wealth continued rising through 2024, displacing inherited and oil/real-estate fortunes."},
+      {"url": "https://www.bloomberg.com/billionaires/", "summary": "Bloomberg Billionaires Index 2024 confirms the trend: ~70% of new top-100 entrants since 2020 are tech founders or early employees."}
+    ],
+    "verdict": "Data continues to back this up — the tech-founder cohort kept growing through 2024, the inherited-fortune share kept shrinking, exactly as PG framed in 2021.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "why-startups-condense-in-america-claim-1",
+    "essay_slug": "america",
+    "claim_text": "If another country wanted to establish a rival to Silicon Valley, the single best thing they could do might be to create a special visa for startup founders. US immigration policy is one of Silicon Valley's biggest weaknesses.",
+    "outcome": "partially correct",
+    "evidence": [
+      {"url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/start-visa.html", "summary": "Canada launched the Start-Up Visa Program in 2013 — explicitly the model PG advocated for in 2006."},
+      {"url": "https://www.gov.uk/innovator-founder-visa", "summary": "UK launched Innovator Founder Visa in 2023 with similar mechanics."}
+    ],
+    "verdict": "Prescient on the lever — Canada and UK explicitly built founder-visa programs PG had advocated for. But none has produced a Silicon Valley rival yet, so the second-order claim is unresolved.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "what-we-look-for-in-founders-claim-3",
+    "essay_slug": "founders",
+    "claim_text": "When we funded Airbnb, we thought it was too crazy. We couldn't believe large numbers of people would want to stay in other people's places. We funded them because we liked the founders so much.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.airbnb.com/about", "summary": "Airbnb 2024 valuation ~$80-100B; 1.5B+ guest arrivals lifetime — far exceeding PG's stated initial skepticism."},
+      {"url": "https://www.ycombinator.com/companies/airbnb", "summary": "YC explicitly cites Airbnb as the canonical 'fund founders, not ideas' case study."}
+    ],
+    "verdict": "The skepticism aged terribly and the underlying meta-claim (fund great founders even when the idea seems crazy) aged perfectly — Airbnb became YC's defining $100B case study.",
+    "resolved_at": "2026-05-16T12:00:00Z"
+  },
+  {
+    "take_id": "ramen-profitable-claim-2",
+    "essay_slug": "ramenprofitable",
+    "claim_text": "[Ramen profitability is feasible because software is now cheap.] Once you cross over into ramen profitable, it completely changes your relationship with investors.",
+    "outcome": "correct",
+    "evidence": [
+      {"url": "https://www.indiehackers.com/", "summary": "Indie Hackers entire community is operationalized ramen profitability with active 2024 reporting on 1000s of bootstrapped founders."},
+      {"url": "https://www.paulgraham.com/aord.html", "summary": "PG's 'Default Alive or Default Dead' (2015) extended this exact dynamic into investor-conversation framing."}
+    ],
+    "verdict": "Validated as a major shift in founder-investor power dynamics — bootstrap-to-strength is now standard YC partner advice for revenue-positive startups.",
+    "resolved_at": "2026-05-16T12:00:00Z"
   }
 ]
