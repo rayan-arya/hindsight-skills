@@ -68,7 +68,10 @@ def load_env_file() -> None:
 
 
 load_env_file()
-HOG_KEY = os.environ.get("THEHOG_API_KEY", "")
+# Accept either env-var name. Planning doc canonicalized THEHOG_*; the
+# bash_profile we set up uses HOG_*. Either works.
+HOG_KEY = os.environ.get("THEHOG_API_KEY") or os.environ.get("HOG_API_KEY", "")
+HOG_SECRET = os.environ.get("THEHOG_API_SECRET") or os.environ.get("HOG_API_SECRET", "")
 
 
 # --- FreshSignalItem shape (matches @hindsight/types) ---------------------
@@ -86,32 +89,87 @@ class FreshSignalItem(BaseModel):
 
 
 def fetch_via_hog(topic: str, limit: int = 3) -> list[FreshSignalItem]:
-    """Call The Hog API.
+    """Call The Hog deep-research API.
 
-    PLACEHOLDER endpoint — once `probe-thehog.py` finds the working shape,
-    update `url`, `headers`, and the response→FreshSignalItem mapping.
+    Per docs.thehog.ai (fetched 2026-05-16): use POST /api/deep-research with
+    a prompt + JSON Schema. Auth: X-Access-Key (ak_*) + X-Secret-Key (sk_*)
+    headers when using the access/secret-pair format, or Authorization Bearer
+    with a single hog_live_* key otherwise.
+
+    Status on hackathon day: the documented /api/* endpoints return 404
+    "requested path is invalid" against api.thehog.ai's Supabase Kong
+    gateway — the upstream is apparently not deployed yet. This adapter is
+    nevertheless wired correctly so the side quest activates as soon as
+    their backend responds. HN fallback covers the demo path in the
+    meantime (already verified end-to-end).
     """
-    if not HOG_KEY:
-        raise RuntimeError("THEHOG_API_KEY not set")
+    if not HOG_KEY or not HOG_SECRET:
+        raise RuntimeError("HOG_API_KEY and HOG_API_SECRET must both be set")
 
-    url = "https://api.thehog.ai/v1/search"
+    url = "https://api.thehog.ai/api/deep-research"
     headers = {
-        "Authorization": f"Bearer {HOG_KEY}",
+        "X-Access-Key": HOG_KEY,
+        "X-Secret-Key": HOG_SECRET,
         "Content-Type": "application/json",
         "User-Agent": "HindsightHackathon/0.1",
     }
-    payload = {"query": topic, "limit": limit}
-    r = requests.post(url, headers=headers, json=payload, timeout=10)
+    prompt = (
+        f"Find {limit} recent (last 7 days) news items or web posts about "
+        f"\"{topic}\". For each item, return source name, title, the URL, "
+        f"publish date in YYYY-MM-DD, and a one-sentence summary. Prefer "
+        f"primary sources (HN, company blogs, news outlets) over aggregators."
+    )
+    schema = {
+        "type": "object",
+        "required": ["items"],
+        "properties": {
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": ["source", "title", "url", "date", "summary"],
+                    "properties": {
+                        "source": {"type": "string"},
+                        "title": {"type": "string"},
+                        "url": {"type": "string"},
+                        "date": {"type": "string"},
+                        "summary": {"type": "string"},
+                    },
+                },
+            }
+        },
+    }
+    payload = {"prompt": prompt, "schema": schema}
+
+    r = requests.post(url, headers=headers, json=payload, timeout=30)
     r.raise_for_status()
     data = r.json()
 
-    # Defensive parsing — we don't know the exact field names yet. Try the
-    # most plausible ones in order.
+    # deep-research is async per the docs: 202 returns an operation id we
+    # poll via GET /api/operations/:id. But if they ever switch to sync the
+    # response will contain `result` directly — handle both.
+    if "operationId" in data or data.get("status") == "pending":
+        op_id = data.get("operationId") or data.get("id")
+        for _ in range(60):  # up to 60 * 2s = 2 min
+            time.sleep(2)
+            p = requests.get(f"https://api.thehog.ai/api/operations/{op_id}", headers=headers, timeout=10)
+            p.raise_for_status()
+            pd = p.json()
+            if pd.get("status") in ("complete", "succeeded", "done"):
+                data = pd.get("result", pd)
+                break
+            if pd.get("status") in ("failed", "error"):
+                raise RuntimeError(f"deep-research failed: {pd.get('error')}")
+        else:
+            raise TimeoutError("deep-research did not complete within 2 minutes")
+
+    # Schema says items[] is at the top level; defensive: also accept
+    # nesting under `result` or `data`.
     raw_items: list[dict[str, Any]] = (
         data.get("items")
-        or data.get("results")
-        or data.get("hits")
-        or (data if isinstance(data, list) else [])
+        or data.get("result", {}).get("items")
+        or data.get("data", {}).get("items")
+        or []
     )
 
     out: list[FreshSignalItem] = []
@@ -181,7 +239,7 @@ def _normalize_date(raw: Any) -> str:
 
 def fetch_fresh_signal(topic: str, limit: int = 3) -> tuple[list[FreshSignalItem], str]:
     """Return (items, source_used). source_used is 'TheHog' or 'HN-fallback'."""
-    if HOG_KEY:
+    if HOG_KEY and HOG_SECRET:
         try:
             items = fetch_via_hog(topic, limit)
             if items:
@@ -206,7 +264,11 @@ app = FastAPI(title="Hindsight Fresh Signal")
 
 @app.get("/health")
 def health() -> dict:
-    return {"ok": True, "hog_key_present": bool(HOG_KEY)}
+    return {
+        "ok": True,
+        "hog_key_present": bool(HOG_KEY),
+        "hog_secret_present": bool(HOG_SECRET),
+    }
 
 
 @app.post("/fetch-fresh-signal")
