@@ -89,10 +89,13 @@ class FreshSignalItem(BaseModel):
 
 
 HOG_BASE = "https://developer.thehog.ai"
-# Deep-research polls take >2 min in practice (verified 2026-05-16 — web
-# research is genuinely slow). DEMO_MODE prefetch absorbs the wait.
-HOG_POLL_TIMEOUT_S = 300
-HOG_POLL_INTERVAL_S = 3
+# Deep-research is genuinely slow — verified 2026-05-16: completed-in-5-min
+# rate is low, real LLM web crawls take 5-10 min. DEMO_MODE prefetch in the
+# extension fires this at app startup, well before the live demo, so latency
+# is off the critical path. For non-demo callers we cap at 10 min and fall
+# back to HN Algolia (verified, fast, always works).
+HOG_POLL_TIMEOUT_S = 600
+HOG_POLL_INTERVAL_S = 5
 
 
 def fetch_via_hog(topic: str, limit: int = 3) -> list[FreshSignalItem]:
