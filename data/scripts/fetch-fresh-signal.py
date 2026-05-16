@@ -88,25 +88,28 @@ class FreshSignalItem(BaseModel):
 # --- The Hog adapter ------------------------------------------------------
 
 
+HOG_BASE = "https://developer.thehog.ai"
+# Deep-research polls take >2 min in practice (verified 2026-05-16 — web
+# research is genuinely slow). DEMO_MODE prefetch absorbs the wait.
+HOG_POLL_TIMEOUT_S = 300
+HOG_POLL_INTERVAL_S = 3
+
+
 def fetch_via_hog(topic: str, limit: int = 3) -> list[FreshSignalItem]:
     """Call The Hog deep-research API.
 
-    Per docs.thehog.ai (fetched 2026-05-16): use POST /api/deep-research with
-    a prompt + JSON Schema. Auth: X-Access-Key (ak_*) + X-Secret-Key (sk_*)
-    headers when using the access/secret-pair format, or Authorization Bearer
-    with a single hog_live_* key otherwise.
-
-    Status on hackathon day: the documented /api/* endpoints return 404
-    "requested path is invalid" against api.thehog.ai's Supabase Kong
-    gateway — the upstream is apparently not deployed yet. This adapter is
-    nevertheless wired correctly so the side quest activates as soon as
-    their backend responds. HN fallback covers the demo path in the
-    meantime (already verified end-to-end).
+    Verified working 2026-05-16:
+      - Host: developer.thehog.ai (NOT api.thehog.ai — that's a Supabase
+        Kong gateway that 404s every /api/* path)
+      - Endpoint: POST /api/deep-research
+      - Auth: X-Access-Key (ak_*) + X-Secret-Key (sk_*) headers
+      - Pattern: 202 + {operationId, pollUrl} → GET pollUrl until
+        status == "complete"
     """
     if not HOG_KEY or not HOG_SECRET:
         raise RuntimeError("HOG_API_KEY and HOG_API_SECRET must both be set")
 
-    url = "https://api.thehog.ai/api/deep-research"
+    url = HOG_BASE + "/api/deep-research"
     headers = {
         "X-Access-Key": HOG_KEY,
         "X-Secret-Key": HOG_SECRET,
@@ -145,23 +148,26 @@ def fetch_via_hog(topic: str, limit: int = 3) -> list[FreshSignalItem]:
     r.raise_for_status()
     data = r.json()
 
-    # deep-research is async per the docs: 202 returns an operation id we
-    # poll via GET /api/operations/:id. But if they ever switch to sync the
-    # response will contain `result` directly — handle both.
-    if "operationId" in data or data.get("status") == "pending":
+    # 202 → async. Poll the returned pollUrl (or fall back to /api/operations/:id)
+    # until status == complete. Verified live: status moves processing → complete.
+    if r.status_code == 202 or "operationId" in data or data.get("status") in ("queued", "processing", "pending"):
         op_id = data.get("operationId") or data.get("id")
-        for _ in range(60):  # up to 60 * 2s = 2 min
-            time.sleep(2)
-            p = requests.get(f"https://api.thehog.ai/api/operations/{op_id}", headers=headers, timeout=10)
+        poll_path = data.get("pollUrl") or f"/api/operations/{op_id}"
+        poll_url = poll_path if poll_path.startswith("http") else HOG_BASE + poll_path
+        deadline = time.time() + HOG_POLL_TIMEOUT_S
+        while time.time() < deadline:
+            time.sleep(HOG_POLL_INTERVAL_S)
+            p = requests.get(poll_url, headers=headers, timeout=10)
             p.raise_for_status()
             pd = p.json()
-            if pd.get("status") in ("complete", "succeeded", "done"):
+            status = pd.get("status")
+            if status in ("complete", "completed", "succeeded", "done"):
                 data = pd.get("result", pd)
                 break
-            if pd.get("status") in ("failed", "error"):
-                raise RuntimeError(f"deep-research failed: {pd.get('error')}")
+            if status in ("failed", "error", "cancelled"):
+                raise RuntimeError(f"deep-research {status}: {pd.get('error') or pd.get('message')}")
         else:
-            raise TimeoutError("deep-research did not complete within 2 minutes")
+            raise TimeoutError(f"deep-research did not complete within {HOG_POLL_TIMEOUT_S}s")
 
     # Schema says items[] is at the top level; defensive: also accept
     # nesting under `result` or `data`.
