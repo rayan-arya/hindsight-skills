@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "qa": "npm run typecheck && npm run lint",
     "extract-takes:check": "tsx --env-file-if-exists=.env skills/extract-takes/check-gold-standard.ts",
-    "resolve-outcomes:audit": "tsx --env-file-if-exists=.env skills/resolve-outcomes/audit-matching.ts"
+    "resolve-outcomes:audit": "tsx --env-file-if-exists=.env skills/resolve-outcomes/audit-matching.ts",
+    "hindsight-profile:check": "tsx --env-file-if-exists=.env skills/hindsight-profile/check-profile.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.96.0",
