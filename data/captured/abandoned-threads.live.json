@@ -1,0 +1,23 @@
+[
+  {
+    "thread_title": "The Profiler-Over-Compiler Bet",
+    "source_essay": "langdes",
+    "source_date": "2001-05-01",
+    "original_quote": "Speed in practice comes from profilers, not compiler optimizations; language implementors should invest in profilers over compiler speed.",
+    "why_unfinished": "PG made a confident, actionable prescription for language designers in 2001 — invest in profilers, not compilers — and then never returned to it despite writing extensively about programming languages, Lisp, and language design for two more decades, leaving the call completely unexamined as JIT compilation and compiler optimization became the dominant performance story."
+  },
+  {
+    "thread_title": "Super-Angels Will Eat VC",
+    "source_essay": "superangels",
+    "source_date": "2010-10-01",
+    "original_quote": "So I think VC funds are seriously threatened by the super-angels. Those of us in the technology world know what usually happens when something comes along that can be described as faster and lighter. Usually it's the replacement.",
+    "why_unfinished": "PG declared in 2010 that super-angels posed an existential threat to traditional VC — a headline-level prediction about the restructuring of the entire funding ecosystem — and then never revisited it even as the predicted convergence or displacement played out (or failed to) over the following decade."
+  },
+  {
+    "thread_title": "Boulder and Portland: The Next Silicon Valleys",
+    "source_essay": "siliconvalley",
+    "source_date": "2006-05-01",
+    "original_quote": "Boulder and Portland are the two US cities that could most easily be turned into new silicon valleys — each is only a great university short of becoming one.",
+    "why_unfinished": "PG named two specific cities as the most plausible candidates to become the next startup hub — a rare, falsifiable geographic prediction — and never returned to assess whether Boulder's subsequent tech growth or Portland's stagnation confirmed or refuted the call, despite writing multiple later essays on startup geography."
+  }
+]

@@ -5,6 +5,7 @@ import { runSkill as findContradictions } from "../skills/find-contradictions/in
 import { runSkill as resolveOutcomes } from "../skills/resolve-outcomes/index.js";
 import { runSkill as hindsightProfile } from "../skills/hindsight-profile/index.js";
 import { runSkill as calibratedAdvise } from "../skills/calibrated-advise/index.js";
+import { runSkill as findAbandonedThreads } from "../skills/find-abandoned-threads/index.js";
 
 const app = express();
 
@@ -43,6 +44,10 @@ app.post("/skills/calibrated-advise", async (req, res) => {
   res.json(await calibratedAdvise(req.body));
 });
 
+app.post("/skills/find-abandoned-threads", async (req, res) => {
+  res.json(await findAbandonedThreads(req.body));
+});
+
 const PORT = Number(process.env.PORT ?? 3001);
 
 app.listen(PORT, () => {
@@ -54,6 +59,7 @@ app.listen(PORT, () => {
     "resolve-outcomes",
     "hindsight-profile",
     "calibrated-advise",
+    "find-abandoned-threads",
   ]) {
     console.log(`  POST /skills/${name}`);
   }
