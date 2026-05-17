@@ -3,21 +3,72 @@
     "thread_title": "The Frighteningly Ambitious Seven",
     "source_essay": "ambitious",
     "source_date": "2012-03-01",
-    "original_quote": "One of the more surprising things I've noticed while working on Y Combinator is how frightening the most ambitious startup ideas are. Any one of them could make you a billionaire. 1. A new search engine. 2. Replace email. 3. Replace universities. 4. Internet drama. 5. The next Steve Jobs. 6. Bring back Moore's Law. 7. Ongoing diagnosis.",
-    "why_unfinished": "PG published a flagship list of seven specific billion-dollar bets in 2012 but never returned to assess which panned out, died, or why — despite a decade of public evidence on each front."
+    "original_quote": "Any one of them could make you a billionaire. 1. A new search engine. 2. Replace email. 3. Replace universities. 4. Internet drama. 5. The next Steve Jobs. 6. Bring back Moore's Law. 7. Ongoing diagnosis.",
+    "market_evidence": [
+      {
+        "event": "Coursera hits 100M learners",
+        "year": 2021,
+        "validated": false
+      },
+      {
+        "event": "OpenAI Search launches",
+        "year": 2024,
+        "validated": true
+      },
+      {
+        "event": "Superhuman raises at $825M valuation",
+        "year": 2021,
+        "validated": false
+      }
+    ],
+    "why_resurface": "PG named seven billion-dollar bets in 2012 and never updated which came true, which failed, or what the next seven would be \u2014 a decade+ scorecard is overdue."
   },
   {
-    "thread_title": "The Super-Angel Threat",
+    "thread_title": "Super-Angels vs. VC Funds",
     "source_essay": "superangels",
-    "source_date": "2010-10-01",
-    "original_quote": "So I think VC funds are seriously threatened by the super-angels.",
-    "why_unfinished": "PG declared super-angels an existential threat to traditional VC in 2010, but never returned to assess whether the threat materialized — even though top VCs ended the 2010s stronger than ever, a striking falsification he never publicly reckoned with."
+    "source_date": "2010-01-01",
+    "original_quote": "I think VC funds are seriously threatened by the super-angels. Those who raise VC rounds will get higher valuations because of leverage from postponed dilution.",
+    "market_evidence": [
+      {
+        "event": "Tiger Global deploys $20B+ mega-rounds",
+        "year": 2021,
+        "validated": false
+      },
+      {
+        "event": "AngelList Rolling Funds launch",
+        "year": 2020,
+        "validated": true
+      },
+      {
+        "event": "Sequoia raises $9B fund",
+        "year": 2022,
+        "validated": false
+      }
+    ],
+    "why_resurface": "PG predicted super-angels would threaten traditional VCs in 2010, then the mega-fund era exploded \u2014 he never reconciled whether his thesis held or inverted."
   },
   {
-    "thread_title": "The Buffalo Transplant Thesis",
-    "source_essay": "siliconvalley",
-    "source_date": "2006-05-01",
-    "original_quote": "If you could get the right ten thousand people to move from Silicon Valley to Buffalo, Buffalo would become Silicon Valley. You only need two kinds of people to create a technology hub: rich people and nerds.",
-    "why_unfinished": "PG asserted that transplanting 10,000 specific people could replicate Silicon Valley anywhere, but never explored why no one tried this or whether the thesis held as tech hubs actually emerged in Austin, Berlin, Miami, and others."
+    "thread_title": "Java as Cobol",
+    "source_essay": "hundred",
+    "source_date": "2010-01-01",
+    "original_quote": "Java will turn out to be an evolutionary dead-end, like Cobol.",
+    "market_evidence": [
+      {
+        "event": "Minecraft written in Java",
+        "year": 2011,
+        "validated": false
+      },
+      {
+        "event": "Android still runs on Java/Kotlin",
+        "year": 2023,
+        "validated": false
+      },
+      {
+        "event": "Java consistently top-3 TIOBE index",
+        "year": 2023,
+        "validated": false
+      }
+    ],
+    "why_resurface": "PG's boldest language prediction \u2014 that Java would become Cobol \u2014 went unaddressed for 14 years while Java remained dominant in mobile and enterprise."
   }
 ]

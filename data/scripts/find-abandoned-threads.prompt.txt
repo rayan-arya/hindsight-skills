@@ -11,12 +11,13 @@ RULES:
 3. Multi-prediction essays (e.g. "Frighteningly Ambitious Startup Ideas" which lists 7 distinct ideas) count as ONE thread — the meta-call that all seven were ambitious bets, not seven separate threads.
 4. Output the 3 strongest abandoned threads. Better to find fewer striking ones than five mediocre ones.
 
-For each thread:
+For each thread, return:
 - thread_title: a short, evocative name (e.g. "The Frighteningly Ambitious Seven")
 - source_essay: essay slug (filename without .md)
 - source_date: YYYY-MM-DD from the take
 - original_quote: verbatim or close paraphrase, max 300 chars
-- why_unfinished: one sentence framing what's surprising about the silence
+- market_evidence: array of 2-3 specific real-world events post-dating the original take that confirm or refute it. Each item: {event: short phrase ≤8 words, year: 4-digit int, validated: true if the event confirms PG's prediction came true, false if it refutes it}. Use actual products / companies / launches / failures that you have reasonable confidence happened. Examples: {event: "Slack hits $7B valuation", year: 2019, validated: true} or {event: "Tiger Global writedown wave", year: 2022, validated: false}. If you cannot cite specific real events with confidence, omit the item — empty list is better than fabricated evidence.
+- why_resurface: one sentence framing why this thread is worth picking up now (what the original call set up that PG never returned to).
 
 Output ONLY a JSON array. No prose, no markdown fences. Empty array if no genuine abandoned threads exist.
 
