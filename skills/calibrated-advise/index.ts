@@ -42,7 +42,7 @@ const FRESH_SIGNAL_TIMEOUT_MS = 30_000;
 const CANDIDATE_POOL = 20; // keyword-recall candidates handed to the reranker
 const TOP_PAGES = 7; // brain pages kept after rerank
 const EXCERPT_CHARS = 800; // per-page excerpt for rerank input + synthesis
-const RELEVANCE_CHARS = 180; // BrainPage.relevance snippet length
+const RELEVANCE_CHARS = 500; // BrainPage.relevance snippet length
 
 const EMPTY_ADJUSTMENT = "Insufficient calibration data — no patterns to apply";
 
