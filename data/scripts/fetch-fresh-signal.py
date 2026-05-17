@@ -89,74 +89,47 @@ class FreshSignalItem(BaseModel):
 
 
 HOG_BASE = "https://developer.thehog.ai"
-# Deep-research is genuinely slow — verified 2026-05-16: completed-in-5-min
-# rate is low, real LLM web crawls take 5-10 min. DEMO_MODE prefetch in the
-# extension fires this at app startup, well before the live demo, so latency
-# is off the critical path. For non-demo callers we cap at 10 min and fall
-# back to HN Algolia (verified, fast, always works).
-HOG_POLL_TIMEOUT_S = 600
-HOG_POLL_INTERVAL_S = 5
+# /api/v1/search with reddit_search type returns real Reddit threads in
+# ~1.5-3s (verified). Way faster than /api/deep-research (5-10 min) and
+# fits FreshSignalItem cleanly. Set a generous-but-tight cap so
+# calibrated-advise's 30s timeout never trips.
+HOG_POLL_TIMEOUT_S = 20
+HOG_POLL_INTERVAL_S = 1
 
 
 def fetch_via_hog(topic: str, limit: int = 3) -> list[FreshSignalItem]:
-    """Call The Hog deep-research API.
+    """Call The Hog /api/v1/search with reddit_search type.
 
-    Verified working 2026-05-16:
-      - Host: developer.thehog.ai (NOT api.thehog.ai — that's a Supabase
-        Kong gateway that 404s every /api/* path)
-      - Endpoint: POST /api/deep-research
-      - Auth: X-Access-Key (ak_*) + X-Secret-Key (sk_*) headers
-      - Pattern: 202 + {operationId, pollUrl} → GET pollUrl until
-        status == "complete"
+    Verified working 2026-05-17. ~1.5-3s end-to-end. Returns real Reddit
+    posts with score, content excerpt, subreddit, and publish date.
     """
     if not HOG_KEY or not HOG_SECRET:
         raise RuntimeError("HOG_API_KEY and HOG_API_SECRET must both be set")
 
-    url = HOG_BASE + "/api/deep-research"
+    url = HOG_BASE + "/api/v1/search"
     headers = {
         "X-Access-Key": HOG_KEY,
         "X-Secret-Key": HOG_SECRET,
         "Content-Type": "application/json",
         "User-Agent": "HindsightHackathon/0.1",
     }
-    prompt = (
-        f"Find {limit} recent (last 7 days) news items or web posts about "
-        f"\"{topic}\". For each item, return source name, title, the URL, "
-        f"publish date in YYYY-MM-DD, and a one-sentence summary. Prefer "
-        f"primary sources (HN, company blogs, news outlets) over aggregators."
-    )
-    schema = {
-        "type": "object",
-        "required": ["items"],
-        "properties": {
-            "items": {
-                "type": "array",
-                "items": {
-                    "type": "object",
-                    "required": ["source", "title", "url", "date", "summary"],
-                    "properties": {
-                        "source": {"type": "string"},
-                        "title": {"type": "string"},
-                        "url": {"type": "string"},
-                        "date": {"type": "string"},
-                        "summary": {"type": "string"},
-                    },
-                },
-            }
-        },
-    }
-    payload = {"prompt": prompt, "schema": schema}
+    payload = {"type": "reddit_search", "query": topic}
 
-    r = requests.post(url, headers=headers, json=payload, timeout=30)
+    r = requests.post(url, headers=headers, json=payload, timeout=10)
     r.raise_for_status()
     data = r.json()
 
-    # 202 → async. Poll the returned pollUrl (or fall back to /api/operations/:id)
-    # until status == complete. Verified live: status moves processing → complete.
-    if r.status_code == 202 or "operationId" in data or data.get("status") in ("queued", "processing", "pending"):
-        op_id = data.get("operationId") or data.get("id")
-        poll_path = data.get("pollUrl") or f"/api/operations/{op_id}"
-        poll_url = poll_path if poll_path.startswith("http") else HOG_BASE + poll_path
+    # 202 → poll the returned poll_url (note: needs /api prefix prepended).
+    if r.status_code == 202 or data.get("status") in ("queued", "processing", "pending"):
+        op_id = data.get("id")
+        poll_path = data.get("poll_url") or data.get("pollUrl") or f"/v1/search/{op_id}"
+        # poll_url comes back as /v1/search/<id>; needs /api prefix.
+        if poll_path.startswith("http"):
+            poll_url = poll_path
+        elif poll_path.startswith("/api/"):
+            poll_url = HOG_BASE + poll_path
+        else:
+            poll_url = HOG_BASE + "/api" + poll_path
         deadline = time.time() + HOG_POLL_TIMEOUT_S
         while time.time() < deadline:
             time.sleep(HOG_POLL_INTERVAL_S)
@@ -165,17 +138,19 @@ def fetch_via_hog(topic: str, limit: int = 3) -> list[FreshSignalItem]:
             pd = p.json()
             status = pd.get("status")
             if status in ("complete", "completed", "succeeded", "done"):
-                data = pd.get("result", pd)
+                data = pd
                 break
             if status in ("failed", "error", "cancelled"):
                 raise RuntimeError(f"deep-research {status}: {pd.get('error') or pd.get('message')}")
         else:
             raise TimeoutError(f"deep-research did not complete within {HOG_POLL_TIMEOUT_S}s")
 
-    # Schema says items[] is at the top level; defensive: also accept
-    # nesting under `result` or `data`.
+    # /api/v1/search returns `results[]` with Reddit-shaped fields.
+    # Defensive: also accept `items[]` (older deep-research shape) or
+    # nesting under `result` / `data`.
     raw_items: list[dict[str, Any]] = (
-        data.get("items")
+        data.get("results")
+        or data.get("items")
         or data.get("result", {}).get("items")
         or data.get("data", {}).get("items")
         or []
@@ -183,13 +158,26 @@ def fetch_via_hog(topic: str, limit: int = 3) -> list[FreshSignalItem]:
 
     out: list[FreshSignalItem] = []
     for it in raw_items[:limit]:
+        summary = (
+            it.get("summary")
+            or it.get("snippet")
+            or it.get("description")
+            or it.get("content", "")
+        )
+        # Reddit content can be long; trim to one-paragraph teaser.
+        if summary and len(summary) > 220:
+            summary = summary[:217].rstrip() + "…"
         out.append(
             FreshSignalItem(
-                source=it.get("source") or "TheHog",
+                source=it.get("subreddit") or it.get("source") or "Reddit",
                 title=it.get("title") or it.get("headline") or "",
                 url=it.get("url") or it.get("link") or "",
-                date=_normalize_date(it.get("date") or it.get("published_at") or it.get("created_at")),
-                summary=it.get("summary") or it.get("snippet") or it.get("description") or "",
+                date=_normalize_date(
+                    it.get("published_at")
+                    or it.get("date")
+                    or it.get("created_at")
+                ),
+                summary=summary,
             )
         )
     return out
