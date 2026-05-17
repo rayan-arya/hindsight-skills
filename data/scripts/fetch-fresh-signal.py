@@ -113,7 +113,11 @@ def fetch_via_hog(topic: str, limit: int = 3) -> list[FreshSignalItem]:
         "Content-Type": "application/json",
         "User-Agent": "HindsightHackathon/0.1",
     }
-    payload = {"type": "reddit_search", "query": topic}
+    # web_search has much better relevance ranking than reddit_search for
+    # niche topics — real search-engine ranking instead of bag-of-words
+    # match on Reddit titles. Covers blogs, Reddit threads, news, and
+    # docs all in one stream.
+    payload = {"type": "web_search", "query": topic}
 
     r = requests.post(url, headers=headers, json=payload, timeout=10)
     r.raise_for_status()
@@ -164,14 +168,26 @@ def fetch_via_hog(topic: str, limit: int = 3) -> list[FreshSignalItem]:
             or it.get("description")
             or it.get("content", "")
         )
-        # Reddit content can be long; trim to one-paragraph teaser.
         if summary and len(summary) > 220:
             summary = summary[:217].rstrip() + "…"
+        url = it.get("url") or it.get("link") or ""
+        # web_search has no `source` field — derive it from the URL host.
+        # Strip "www." and tld for compactness: medium.com → medium,
+        # reddit.com → reddit, ycombinator.com → ycombinator.
+        source = it.get("subreddit") or it.get("source") or ""
+        if not source and url:
+            import re as _re
+            m = _re.search(r"https?://(?:www\.)?([^/]+)", url)
+            if m:
+                host = m.group(1)
+                # Pretty: keep up to second-level domain.
+                parts = host.split(".")
+                source = parts[-2] if len(parts) >= 2 else host
         out.append(
             FreshSignalItem(
-                source=it.get("subreddit") or it.get("source") or "Reddit",
+                source=source or "Web",
                 title=it.get("title") or it.get("headline") or "",
-                url=it.get("url") or it.get("link") or "",
+                url=url,
                 date=_normalize_date(
                     it.get("published_at")
                     or it.get("date")
@@ -234,7 +250,42 @@ def _normalize_date(raw: Any) -> str:
 # --- Public entry point ---------------------------------------------------
 
 
+# Stopwords stripped before passing the query to Hog/HN. Long sentence
+# questions ("Should YC double down on Bay Area founders or expand to
+# global remote founders?") otherwise dilute into keyword soup and match
+# r/HFY / r/roadtrip on incidental hits. Distill to nouns first.
+_STOPWORDS = frozenset((
+    "a an the and or but if then else of in on at to for from with by"
+    " is are was were be been being am as has have had do does did"
+    " will would should could may might must can shall need ought"
+    " i you he she it we they me him her us them this that these those"
+    " what which who whom whose where when why how"
+    " not no nor too very just only also even still yet"
+    " up down out off over under again more most less least"
+    " here there now while during about against between into through"
+    " so than such own same other another any some all both each few many"
+).split())
+
+
+def distill_topic(question: str, max_terms: int = 5) -> str:
+    """Strip stopwords + punctuation, keep alpha tokens ≥3 chars, return the
+    last N (which typically capture the predicate of a question — what the
+    user is actually asking ABOUT)."""
+    import re
+    tokens = re.findall(r"[A-Za-z][A-Za-z'-]+", question)
+    keep = [t for t in tokens if len(t) >= 3 and t.lower() not in _STOPWORDS]
+    if not keep:
+        return question.strip()
+    # Last `max_terms` tokens — usually the topic, not the verb.
+    return " ".join(keep[-max_terms:])
+
+
 def fetch_fresh_signal(topic: str, limit: int = 3) -> tuple[list[FreshSignalItem], str]:
+    # Caller passes the full question; Hog/HN search on the distilled form.
+    original = topic
+    topic = distill_topic(topic)
+    if topic != original:
+        print(f"[fresh-signal] distilled {original!r} → {topic!r}", flush=True)
     """Return (items, source_used). source_used is 'TheHog' or 'HN-fallback'."""
     if HOG_KEY and HOG_SECRET:
         try:
