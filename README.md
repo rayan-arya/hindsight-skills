@@ -15,12 +15,11 @@ Five new GBrain skills + a GStack Browser extension. Submitted to the YC GStack 
 ## Built by
 
 - Rayan Arya
-- Rushil [last]
-- Keshav [last]
+- Rushil Jaiswal
+- Keshav Kotamraju
 
 ## Demo
-
-[Video link]
+https://drive.google.com/drive/folders/19mLqKOWKwfYlEnFAGvXsOz7omVFLwEbZ
 
 ## The skills
 
